@@ -170,19 +170,9 @@ The application follows SOLID principles and is designed for extensibility:
 To add new repository status classifications:
 
 1. Create a new classifier implementing `IStatusClassifier`
-2. Add it to the `StatusService` constructor
-3. Define the new status in the `RepositoryStatus` enum
+- The system automatically discovers and registers all classifiers at startup using reflection.
 
-Example:
-```csharp
-public class ExperimentalClassifier : IStatusClassifier
-{
-    public RepositoryStatus? Classify(ExtendedRepositoryData data)
-    {
-        // Implementation logic
-        return RepositoryStatus.Experimental;
-    }
-}
+
 ```
 
 ## 📊 Data Sources
