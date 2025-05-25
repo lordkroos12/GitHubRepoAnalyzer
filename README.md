@@ -173,8 +173,6 @@ To add new repository status classifications:
 - The system automatically discovers and registers all classifiers at startup using reflection.
 
 
-```
-
 ## 📊 Data Sources
 
 The application fetches data from various GitHub API endpoints:
