@@ -1,10 +1,9 @@
-﻿using GitHubRepoAnalyzer.Enums;
-using GitHubRepoAnalyzer.Models;
+﻿using GitHubRepoAnalyzer.Models;
 
 namespace GitHubRepoAnalyzer.Interfaces
 {
     public interface IStatusClassifier
     {
-        RepositoryStatus? Classify(ExtendedRepositoryData data);
+        string? Classify(ExtendedRepositoryData data);
     }
 }

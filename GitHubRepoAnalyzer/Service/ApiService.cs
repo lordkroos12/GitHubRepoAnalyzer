@@ -9,9 +9,9 @@ namespace GitHubRepoAnalyzer.Service
         private readonly IGitHubClient _gitHubClient;
         private readonly IStatusService _statusService;
 
-        public ApiService(string token)
+        public ApiService(IStatusService statusService, string token)
         {
-            _statusService = new StatusService();
+            _statusService = statusService;
             _gitHubClient = new GitHubClient(new ProductHeaderValue("GitHubAnalyzer"));
 
             if (!string.IsNullOrEmpty(token))

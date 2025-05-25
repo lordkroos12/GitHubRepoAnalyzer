@@ -1,5 +1,7 @@
-﻿using GitHubRepoAnalyzer.Helper;
-using GitHubRepoAnalyzer.Service;
+﻿using GitHubRepoAnalyzer.Extensions;
+using GitHubRepoAnalyzer.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace GitHubRepoAnalyzer
 {
@@ -7,9 +9,19 @@ namespace GitHubRepoAnalyzer
     {
         static async Task Main(string[] args)
         {
-            var apiService = new ApiService(TokenProvider.GetToken());
-            var menu = new PrintHelper(apiService);
-            await menu.PrintMenuAsync();
+            var host = CreateHostBuilder(args).Build();
+
+            var printHelper = host.Services.GetRequiredService<IPrintHelper>();
+            await printHelper.PrintMenuAsync();
+        }
+
+        static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Host.CreateDefaultBuilder(args)
+                .ConfigureServices((context, services) =>
+                {
+                    services.AddGitHubAnalyzerServices(context.Configuration);
+                });
         }
     }
 }

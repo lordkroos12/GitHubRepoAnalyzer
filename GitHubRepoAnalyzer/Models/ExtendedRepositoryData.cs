@@ -1,5 +1,4 @@
-﻿using GitHubRepoAnalyzer.Enums;
-using System.Text;
+﻿using System.Text;
 
 namespace GitHubRepoAnalyzer.Models
 {
@@ -14,7 +13,7 @@ namespace GitHubRepoAnalyzer.Models
         public DateTime? LastCommitDate { get; set; }
         public DateTime? LastIssueActivityDate { get; set; }
         public DateTime? LastActivityByMaintainer { get; set; }
-        public RepositoryStatus? Status { get; set; }
+        public string? Status { get; set; }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
